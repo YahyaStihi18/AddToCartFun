@@ -1,0 +1,60 @@
+{% extends 'app/base.html' %}
+{% block content%}
+<section class="services spad">
+
+    <div class="container" style="margin: 10px;">
+        <div class="row">
+            <div class="col-md-4 order-md-1 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">My Profile:</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Username:</h6>
+                            <small class="text-muted">{{ user.username}} </small>
+                        </div>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Email:</h6>
+                            <small class="text-muted">{{user.email}}</small>
+                        </div>
+
+                </ul>
+            </div>
+
+
+            <!-- form info Section Begin -->
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">My Orders:</h4>
+                <hr>
+                {% for order in orders %}
+                <div class="card text-center">
+                    <div class="card-header">{{ order.date_added }}
+                    </div>
+                    <div class="card-body" style="text-align: left;">
+                      <h5 class="card-title"></h5>
+                      <small class="card-text">completed: {{ order.ordered }}</small><br>
+                      <p style="color: green; float: right; font-weight: 700;"></p>
+                      <p class="card-text">client: {{ order.user }} </p>
+                      <p class="card-text">{% for item in order.items.all %}<hr>{{ item }} {% endfor%}
+                    </p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <a href="#" class="btn btn-danger" style="float: right;">Delete</a>
+                      <small style="float: left;"></small>
+                    </div>
+                  </div>
+                  <br>
+
+                {% endfor %}
+                
+
+                <!--form ends here-->
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content%}

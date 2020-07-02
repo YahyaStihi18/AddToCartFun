@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+
+
+{% block content%}
+{{ object.pk }}
+
+<img src="{{ item.image.url }}" style="max-width: 20rem;">
+<a href="{% url 'app:add-to-cart' item.pk %}" class="btn btn-outline-success">Add to card</a>
+
+
+<hr>
+{{ item.name }} : 
+{{ item.price }}$
+{% endblock content%}
